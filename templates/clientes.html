@@ -2,39 +2,80 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Lista de Clientes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clientes Registrados</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #00aaff; color: white; }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #f0f0f0;
+            padding: 20px;
+        }
+        h1 {
+            color: #00e5ff;
+            text-align: center;
+        }
+        table {
+            margin: 20px auto;
+            border-collapse: collapse;
+            width: 90%;
+            background: #222;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #444;
+            text-align: left;
+        }
+        th {
+            background-color: #00b8d4;
+            color: #000;
+        }
+        tr:hover {
+            background-color: #00e5ff44;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #00e5ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>Clientes Contactados</h1>
+    <h1>Clientes Registrados</h1>
+
     {% if clientes %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Teléfono</th>
-                    <th>Mensaje</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for c in clientes %}
-                <tr>
-                    <td>{{ c.nombre }}</td>
-                    <td>{{ c.correo }}</td>
-                    <td>{{ c.telefono }}</td>
-                    <td>{{ c.mensaje }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Teléfono</th>
+                <th>Mensaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente.nombre }}</td>
+                <td>{{ cliente.correo }}</td>
+                <td>{{ cliente.telefono }}</td>
+                <td>{{ cliente.mensaje }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
-        <p>No hay clientes registrados aún.</p>
+    <p style="text-align:center;">No hay datos de clientes aún.</p>
     {% endif %}
+
+    <a href="/">Volver a la página principal</a>
 </body>
 </html>
