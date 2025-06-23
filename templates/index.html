@@ -1,61 +1,74 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Servicios Tecnológicos 2080</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      background-image: url("{{ url_for('static', filename='img/fondo.jpg') }}");
-      background-size: cover;
-      background-position: center;
-      color: white;
-      min-height: 100vh;
-    }
-    .fondo-formulario {
-      background-color: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 10px;
-      margin-top: 2rem;
-    }
-    label, h1 {
-      color: #fff;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Servicios Tecnológicos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet"
+    >
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1614064642307-813e7f5dcdd3'); /* Imagen de tecnología y nube */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: white;
+        }
+        .fondo {
+            background-color: rgba(0, 0, 0, 0.75);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        h1, h2 {
+            color: #00d1ff;
+        }
+        .form-label {
+            color: white;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <div class="fondo-formulario">
-      <h1 class="text-center mb-3">Servicios Tecnológicos 2080</h1>
-      <p class="text-center">Especialistas en soluciones en la nube, bases de datos y sistemas automatizados.</p>
+    <div class="container fondo">
+        <h1 class="text-center">Servicios Profesionales en Tecnologías de la Información</h1>
+        
+        <h2 class="mt-4">Servicios Ofrecidos</h2>
+        <ul>
+            <li><strong>Administración de Bases de Datos:</strong> PostgreSQL, SQL Server, Oracle</li>
+            <li><strong>Automatización de Procesos:</strong> Scripts, bots y soluciones RPA</li>
+            <li><strong>Diseño y Desarrollo Web:</strong> Sitios modernos, responsivos y optimizados</li>
+            <li><strong>Soporte Técnico:</strong> Infraestructura, monitoreo, backups y más</li>
+        </ul>
 
-      <form action="/contacto" method="POST">
-        <div class="mb-3">
-          <label class="form-label">Nombre</label>
-          <input type="text" name="nombre" class="form-control" required />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Teléfono</label>
-          <input type="tel" name="telefono" class="form-control" required />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Correo electrónico</label>
-          <input type="email" name="correo" class="form-control" required />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Mensaje</label>
-          <textarea name="mensaje" class="form-control" rows="4" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        <hr>
 
-        {% if mensaje_exito %}
-        <div class="alert alert-success mt-4">
-          ¡Gracias! Tus datos fueron enviados correctamente. Nuestro equipo te contactará a la brevedad.
-        </div>
+        <h2 class="mt-4">Formulario de Contacto</h2>
+        <form action="/contacto" method="post">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" name="correo" required>
+            </div>
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" name="telefono" required>
+            </div>
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea class="form-control" name="mensaje" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+        {% if mensaje_enviado %}
+            <div class="alert alert-success mt-3">
+                ¡Gracias! Tus datos fueron enviados. Uno de nuestros ejecutivos te contactará a la brevedad.
+            </div>
         {% endif %}
-      </form>
     </div>
-  </div>
 </body>
 </html>
