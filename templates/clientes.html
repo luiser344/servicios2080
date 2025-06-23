@@ -2,33 +2,39 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <title>Clientes registrados</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <title>Lista de Clientes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #00aaff; color: white; }
+    </style>
 </head>
-<body class="container mt-4">
-    <h1>Clientes registrados</h1>
+<body>
+    <h1>Clientes Contactados</h1>
     {% if clientes %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Mensaje</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for cliente in clientes %}
-            <tr>
-                <td>{{ cliente.nombre }}</td>
-                <td>{{ cliente.correo }}</td>
-                <td>{{ cliente.mensaje }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Mensaje</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in clientes %}
+                <tr>
+                    <td>{{ c.nombre }}</td>
+                    <td>{{ c.correo }}</td>
+                    <td>{{ c.telefono }}</td>
+                    <td>{{ c.mensaje }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     {% else %}
-    <p>No hay clientes registrados aún.</p>
+        <p>No hay clientes registrados aún.</p>
     {% endif %}
-    <a href="/" class="btn btn-primary mt-3">Volver al inicio</a>
 </body>
 </html>
